@@ -21,11 +21,11 @@ the pickup and the return date. The car is picked up from a location and returne
          <br> a. Show the reservation number and the location ID of all rentals on 5/20/2015 
          <br> b. Show the first and the last name and the mobile phone number of these customers that have rented a car in the category that has label = 'luxury'
          <br> c. Show the total amount of rentals per location ID (pick up)
-         <br> d. Show the total amount of rentals per car's category ID and month</br>
-         <br> e. For each rental’s state (pick up) show the top renting category</br>
-         <br> f. Show how many rentals there were in May 2015 in ‘NY’, ‘NJ’ and ‘CA’ (in three columns) </br>
-         <br> g. For each month of 2015, count how many rentals had amount greater than this month's average rental amount</br>
-         <br> h. For each month of 2015, show the percentage change of the total amount of rentals over the total amount of rentals of the same month of 2014</br>
+         <br> d. Show the total amount of rentals per car's category ID and month
+         <br> e. For each rental’s state (pick up) show the top renting category
+         <br> f. Show how many rentals there were in May 2015 in ‘NY’, ‘NJ’ and ‘CA’ (in three columns) 
+         <br> g. For each month of 2015, count how many rentals had amount greater than this month's average rental amount
+         <br> h. For each month of 2015, show the percentage change of the total amount of rentals over the total amount of rentals of the same month of 2014
          <br> i. For each month of 2015, show in three columns: the total rentals’ amount of the previous months, the total rentals’ amount of this month and the total rentals’ amount of the following months</br>
 4. (20%) Using the programming language of your choice, connect to the database and implement query (i) above – without using GROUP BY SQL statements, i.e. you are only allowed
          to use SELECT…FROM…WHERE.
