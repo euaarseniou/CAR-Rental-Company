@@ -15,10 +15,10 @@ the pickup and the return date. The car is picked up from a location and returne
 
 1. (10%) Use the Entity-Relationship Diagram (ERD) to model entities, relationships, attributes, cardinalities, and all necessary constraints. Use any tool you like to draw the
          ERD.
-2. (10%) <br> Create the relational schema in MySQL/SQLServer and insert a few records into the tables to test your queries below. You will have to hand in the CREATE TABLE
-         statements. </br>
+2. (10%) Create the relational schema in MySQL/SQLServer and insert a few records into the tables to test your queries below. You will have to hand in the CREATE TABLE
+         statements. 
 3. (60%) Write SQL code and test it to your data for the following queries 
-         a. Show the reservation number and the location ID of all rentals on 5/20/2015
+         <br> a. Show the reservation number and the location ID of all rentals on 5/20/2015 </br>
          b. Show the first and the last name and the mobile phone number of these customers that have rented a car in the category that has label = 'luxury'
          c. Show the total amount of rentals per location ID (pick up)
          d. Show the total amount of rentals per car's category ID and month
