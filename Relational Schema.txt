@@ -1,0 +1,67 @@
+CREATE DATABASE COMPANY;
+USE COMPANY;
+
+CREATE TABLE category (
+  categ_id int NOT NULL,
+  description VARCHAR(45),
+  label VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`categ_id`)
+);
+
+CREATE TABLE customer (
+  customer_id int NOT NULL,
+  SSN VARCHAR(9),
+  first_name VARCHAR(45),
+  last_name VARCHAR(45),
+  email VARCHAR(45),
+  phone_nr VARCHAR(10),
+  state VARCHAR(45),
+  country VARCHAR(45),
+  PRIMARY KEY (`customer_id`)
+);
+
+CREATE TABLE location (
+  location_id VARCHAR(10) NOT NULL,
+  street VARCHAR(45),
+  number INT,
+  city VARCHAR(45),
+  state VARCHAR(45),
+  country VARCHAR(45),
+  PRIMARY KEY (location_id) 
+);
+
+CREATE TABLE location_telephones (
+ location_id VARCHAR(10) NOT NULL,
+ telephone VARCHAR(10) NOT NULL,
+ telephone2 VARCHAR(10),
+ CONSTRAINT LP_P PRIMARY KEY(location_id, telephone),
+ CONSTRAINT LP_F FOREIGN KEY(location_id) REFERENCES location(location_id) 
+);
+
+CREATE TABLE car (
+  VIN VARCHAR(45) NOT NULL,
+  car_description VARCHAR(45),
+  color VARCHAR(45),
+  brand VARCHAR(45),
+  model VARCHAR(45),
+  purchase_date DATE NOT NULL,
+  categ_id INT NOT NULL,
+  PRIMARY KEY (VIN),
+  FOREIGN KEY (categ_id) REFERENCES category(categ_id)
+);
+  
+CREATE TABLE rental (
+  reserv_nr INT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  pickup_date DATE,
+  return_date DATE,
+  customer_id INT NOT NULL,
+  VIN VARCHAR(45) NOT NULL,
+  pickuplocation_ID VARCHAR(10) NOT NULL,
+  returnlocation_ID VARCHAR(10) NOT NULL,
+  PRIMARY KEY (reserv_nr),
+  CONSTRAINT rental_fk1 FOREIGN KEY (pickuplocation_ID) REFERENCES location (location_id),
+  CONSTRAINT rental_fk2 FOREIGN KEY (returnlocation_ID) REFERENCES location (location_id),
+  CONSTRAINT rental_fk3 FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+  CONSTRAINT rental_fk4 FOREIGN KEY (VIN) REFERENCES car(VIN)
+);

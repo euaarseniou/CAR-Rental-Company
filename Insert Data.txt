@@ -1,0 +1,97 @@
+INSERT INTO category (categ_id, description, label) VALUES
+  ('1', 'for two', 'compact'),
+  ('2', 'next generation', 'luxury'),
+  ('3', 'long distances', 'convertible'),
+  ('4', 'few space', 'economy');
+
+INSERT INTO customer (customer_id, SSN, first_name, last_name, email, phone_nr, state, country) VALUES
+  ('521', '856234956', 'Pieter','Garcia','pietergarcia@gmail.com','5793648623','NY','America'),
+  ('632', '759623489', 'Irene','Davis','ireneDavis@rgv.gr','6589356710','NJ','America'),
+  ('853', '485697586', 'Tony','Gonzalez','tonygonzalez@yahoo.gr','0624183268','CA','America'),
+  ('6304', '341689752', 'John','Thompson','johnthompson@gmail.com','0015862397','CA','America'),
+  ('58090', '412398569', 'Kate','Lee','katel@yahoo.gr','0214693896','CA','America'),
+  ('6306', '312658974', 'Christian','Lewis','christianLewis@gda.com','0054068975','NY','America'),
+  ('7097', '798134506', 'Alice','Robinson','alicerobinson@gmail.com','0340680690','NJ','America'),
+  ('03208', '102563049', 'Pieter','Walker','','0001458963','CA','America'),
+  ('9069', '986047896', 'Evi','Nelson','','5047089603','CA','America'),
+  ('48010', '302598756', 'Cecil','Hall','','5014893036','NJ','America'),
+  ('90611', '302496876', 'Gabriel','Rivera','gabrielrivera@ydap.gr','8040903609','NY','America'),
+  ('14062', '748963015', 'Charles','Campbell','charlescampbell@yahoo.gr','0013589670','CA','America'),
+  ('17093', '796301589', 'Anna','Mitchell','annamitchell@gmail.com','0015983603','CA','America'),
+  ('6014', '749630150', 'Hilda','Carter','hildacarter@yahoo.gr','0016589756','CA','America'),
+  ('60615', '149630259', 'John','Roberts','','0014896394','NJ','America'),
+  ('160906', '793015603', 'Kate','Flores','kateflores@aue.com','6589703658','CA','America'),
+  ('1907', '010218963', 'Christian','Torres','christiantorres@oape.gr','0001539862','NY','America'),
+  ('607018', '301698746', 'Kelly','Adams','','0140863903','NY','America'),
+  ('360619', '713065983', 'Pamela','Wright','pamelawright@pdl.com','0014523698','NJ','America'),
+  ('270900', '302698436', 'Jack','King','','0010569830','NY','America');
+  
+INSERT INTO location (location_id, street, number, city, state, country) VALUES
+  ('LOC1','Court Street','12','Florence','CA','America'),
+  ('LOC2','Creek Street','27','Ketchikan','CA','America'),
+  ('LOC3','Congress Street','65','Tucson','NY','America'),
+  ('LOC4','Dickson Street','69','Fayetteville','CA','America'),
+  ('LOC5','Lombard Street','96','San Francisco','CA','America'),
+  ('LOC6','Larimer Square','5','Denver','NY','America'),
+  ('LOC7','Chapel Street','56', 'New Haven','NY','America'),
+  ('LOC8','Second Street','69', 'Lewes', 'NJ','America'),
+  ('LOC9','Ocean Drive','78','Miami','CA','America'),
+  ('LOC10','Peachtree Street','96','Atlanta','CA','America');
+
+
+INSERT INTO location_telephones (location_id, telephone, telephone2) VALUES
+  ('LOC1','0216856320',''),
+  ('LOC2','0326597523','6320890606'),
+  ('LOC3','0136523586',''),
+  ('LOC4','0159634892',''),
+  ('LOC5','0139658962',''),
+  ('LOC6','0189652648',''),
+  ('LOC7','0148935230',''),
+  ('LOC8','0149875230', '0139658403'),
+  ('LOC9','0136985324', '0135986530'),
+  ('LOC10','0160359803', '0241036590');
+ 
+
+INSERT INTO car (VIN, car_description, color,brand,model,purchase_date,categ_id) VALUES
+  ('1','','black','Audi','100','2013-05-20','1'),
+  ('21','','blue','Citroen','C1','2013-05-10','2'),
+  ('32', '','red','Subaru','IMPREZA','2012-05-20','3'),
+  ('43','', 'white','Toyota','COROLLA','2010-05-08','2'),
+  ('54','', 'gold','Renault','ZOE','2010-01-30','1'),
+  ('65','','black', 'Mitsubishi','ECLIPSE','2011-04-02','3'),
+  ('76','', 'red','Audi','200','2010-05-20','4'),
+  ('87','','grey','Mitsubishi','SPACE STAR','2010-08-06','1'),
+  ('98','', 'gold','Mercedes-Benz','X-CLASS','2011-09-08','2'),
+  ('109','','blue','Toyota','YARIS', '2015-06-07','4'),
+  ('1110','','black', 'Mercedes-Benz','VIANO','2010-04-29','2'),
+  ('1211','','red', 'Subaru','BRZ','2013-05-08','3'),
+  ('1312', '','white','Citroen','AMI','2010-05-20','1'),
+  ('1413', '','grey', 'Mitsubishi','LANCER','2011-01-08','3'),
+  ('1514','', 'blue','Audi','100','2010-05-08','3'),
+  ('1615','', 'white','Mitsubishi','ECLIPSE','2012-05-08','4'),
+  ('1716', '','black','Toyota','CELICA','2012-03-13','4'),
+  ('1817','', 'blue','Citroen','AX','2010-03-29','1'),
+  ('1918','', 'red','Audi','200','2012-05-20','4'),
+  ('2019', '','black','Subaru','JUSTY','2010-05-21','4');
+
+INSERT INTO rental (reserv_nr, amount, pickup_date, return_date, customer_id, VIN, pickuplocation_id, returnlocation_id) VALUES
+  ('160','250','2015-05-20','2015-06-02','521', '1', 'LOC8','LOC1'),
+  ('542','1050.55','2015-05-01','2015-07-01','632', '21','LOC3','LOC3'),
+  ('3543','100','2014-05-05','2015-05-07','853', '32','LOC8','LOC3'),
+  ('5454','2500', '2015-05-20','2015-03-05','6304', '43','LOC9','LOC5'),
+  ('3155','3050', '2015-03-05','2015-06-05','58090', '54','LOC8','LOC10'),
+  ('3516','60.30','2014-03-25', '2014-03-27','6306', '65','LOC4','LOC9'),
+  ('754','809.10', '2015-07-22','2015-07-30','7097', '76','LOC2','LOC5'),
+  ('834','250','2015-05-03','2015-05-07','03208','87','LOC4','LOC2'),
+  ('934','100.40', '2015-10-01','2015-10-02','9069', '98','LOC6','LOC4'),
+  ('3410','800','2015-11-20','2015-11-29', '48010', '109','LOC1','LOC3'),
+  ('1541','3200','2014-11-20', '2014-12-20','90611', '1110','LOC6','LOC9'),
+  ('43412','406.30','2015-05-09', '2015-05-20','14062', '1211','LOC3','LOC7'),
+  ('3413', '40.60','2014-01-01','2014-01-02','17093', '1312','LOC9','LOC5'),
+  ('1434', '40.90','2015-12-05', '2015-12-08','6014', '1413','LOC5','LOC10'),
+  ('3415','78.90', '2014-06-03','2014-06-05','60615', '1514','LOC2','LOC4'),
+  ('2416','500', '2015-02-15','2015-02-20','160906', '1615','LOC8','LOC10'),
+  ('1017', '634.50','2014-02-10','2014-02-25','1907', '1716','LOC1','LOC2'),
+  ('718','250.60', '2015-08-23','2015-08-29','607018', '1817','LOC7','LOC1'),
+  ('19','480', '2014-01-03','2014-01-09','360619','1918','LOC10','LOC9'),
+  ('7820', '550','2015-05-03','2015-05-09','270900','2019','LOC2','LOC5');

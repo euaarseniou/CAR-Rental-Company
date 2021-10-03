@@ -1,0 +1,28 @@
+install.packages('RMySQL')
+library(RMySQL)
+
+mydb<-dbConnect(MySQL(),user='root',password='euaki1996',dbname='company',host='127.0.0.1')
+
+
+c<-dbSendQuery(mydb,"DROP VIEW IF EXISTS V3")
+d<-fetch(c,n=-1)
+
+c<-dbSendQuery(mydb,"CREATE VIEW V3 AS
+SELECT distinct MONTH(pickup_date) AS current_month, SUM(amount) OVER (PARTITION BY month(pickup_date)) AS current_amount
+FROM rental
+WHERE YEAR(pickup_date) = '2015'
+ORDER BY MONTH(pickup_date)")
+
+
+c<-dbSendQuery(mydb,"SELECT i.current_month AS month_number,
+    (SELECT SUM(current_amount) AS sum_amount
+	 FROM V3
+	 WHERE current_month < i.current_month) AS Previous_Month, i.current_amount AS Current_Month,
+       (SELECT SUM(current_amount) AS sum_amount
+        FROM V3
+        WHERE current_month > i.current_month) AS Next_Month
+FROM V3 i
+order by month_number asc")
+
+d<-fetch(c,n=-1)
+d
