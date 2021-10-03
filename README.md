@@ -18,9 +18,9 @@ the pickup and the return date. The car is picked up from a location and returne
 2. (10%) Create the relational schema in MySQL/SQLServer and insert a few records into the tables to test your queries below. You will have to hand in the CREATE TABLE
          statements. 
 3. (60%) Write SQL code and test it to your data for the following queries 
-         <br> a. Show the reservation number and the location ID of all rentals on 5/20/2015 </br>
-         <br> b. Show the first and the last name and the mobile phone number of these customers that have rented a car in the category that has label = 'luxury'</br>
-         <br> c. Show the total amount of rentals per location ID (pick up)</br>
+         <br> a. Show the reservation number and the location ID of all rentals on 5/20/2015 
+         <br> b. Show the first and the last name and the mobile phone number of these customers that have rented a car in the category that has label = 'luxury'
+         <br> c. Show the total amount of rentals per location ID (pick up)
          <br> d. Show the total amount of rentals per car's category ID and month</br>
          <br> e. For each rental’s state (pick up) show the top renting category</br>
          <br> f. Show how many rentals there were in May 2015 in ‘NY’, ‘NJ’ and ‘CA’ (in three columns) </br>
