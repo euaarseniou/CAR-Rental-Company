@@ -12,56 +12,57 @@ SELECT first_name "First Name", last_name "Last Name", phone_nr "phone numbers o
 FROM customer as c, rental as r, car, category
 WHERE  c.customer_id=r.customer_id and r.VIN=car.VIN and car.categ_id=category.categ_id and category.label='luxury';
 
+
 #c. Show the total amount of rentals per location ID (pick up)
 
 SELECT pickuplocation_id "location ID", round(sum(amount),2) "Total amount of rentals"
 FROM rental
-group by pickuplocation_id;
+GROUP BY pickuplocation_id;
 
 
 #d. Show the total amount of rentals per car's category ID and month
 
-select car.categ_id "Category ID",  extract(year from r.pickup_date) "Year", extract(month from r.pickup_date) "Month", round(sum(amount),2) "Total amount of rentals"
-from  rental as r, car 
-where r.VIN=car.VIN
-group by car.categ_id, year, month
-order by car.categ_id ASC, year ASC, month ASC;
+SELECT car.categ_id "Category ID",  EXTRACT(YEAR FROM r.pickup_date) "Year", EXTRACT(MONTH FROM r.pickup_date) "Month", ROUND(SUM(amount),2) "Total amount of rentals"
+FROM  rental AS r, car 
+WHERE r.VIN=car.VIN
+GROUP BY car.categ_id, year, month
+ORDER BY car.categ_id ASC, year ASC, month ASC;
 
 
 #e. For each rental’s state (pick up) show the top renting category
 
-Drop view if exists State;
+DROP VIEW IF EXISTS State;
 
-create view State as
-select state, label, count(reserv_nr) as rentals
-from location, category, rental, car  
-where rental.pickuplocation_id=location.location_id and rental.VIN=car.VIN and category.categ_id=car.categ_id
-group by location.state, category.categ_id
-order by location.state, rentals DESC;
+CREAT VIEW State AS
+SELECT state, label, count(reserv_nr) AS rentals
+FROM location, category, rental, car  
+WHERE rental.pickuplocation_id=location.location_id AND rental.VIN=car.VIN AND category.categ_id=car.categ_id
+GROUP BY location.state, category.categ_id
+ORDER BY location.state, rentals DESC;
 
-select state, label , max(rentals) "Total Rentals for top renting category"
-from State
-group by state;
+SELECT state, label , MAX(rentals) "Total Rentals for top renting category"
+FROM State
+GROUP BY state;
 
 
 #f. Show how many rentals there were in May 2015 in ‘NY’, ‘NJ’ and ‘CA’ (in three columns)
 
 DROP VIEW IF EXISTS may2015;
 
-create view may2015 as
-select state, count(reserv_nr) as rentals
-from location, rental
-where rental.pickuplocation_id=location.location_id and 
-	(location.state="NY" or location.state="NJ" or location.state="CA") and 
-	extract(year from rental.pickup_date)='2015' and 
-	extract(month from rental.pickup_date)='5'
-group by location.state; 
+CREATE VIEW may2015 AS
+SELECT state, count(reserv_nr) AS rentals
+FROM location, rental
+WHERE rental.pickuplocation_id=location.location_id AND 
+	(location.state="NY" OR location.state="NJ" OR location.state="CA") AND 
+	EXTRACT(year FROM rental.pickup_date)='2015' AND 
+	EXTRACT(month FROM rental.pickup_date)='5'
+GROUP BY location.state; 
 
-select
-  max(case when state = 'CA' then rentals end) AS CA,
-  max(case when state = 'NY' then rentals end) AS NY,
-  max(case when state = 'NJ' then rentals end) AS NJ
-from may2015;
+SELECT
+  MAX(CASE WHEN state = 'CA' THEN rentals END) AS CA,
+  MAX(CASE WHEN state = 'NY' THEN rentals END) AS NY,
+  MAX(CASE WHEN state = 'NJ' THEN rentals END) AS NJ
+FROM may2015;
 
         
 #g. For each month of 2015, count how many rentals had amount greater than this month's average rental amount
@@ -83,9 +84,9 @@ ROUND((sum(amount)- r2.sum2014) * 100 / sum(amount), 2) AS percentage
 FROM rental AS r1
 INNER JOIN (SELECT month(pickup_date) month, round(sum(AMOUNT),2) AS sum2014
             FROM rental
-			WHERE year(pickup_date)="2014"
+	    WHERE year(pickup_date)="2014"
             GROUP BY MONTH(pickup_date)
-		    ORDER BY month(pickup_date) ASC) as r2
+            ORDER BY month(pickup_date) ASC) as r2
 ON month(r1.pickup_date)= r2.month
 WHERE year(r1.pickup_date)="2015"
 GROUP BY MONTH(r1.pickup_date)
@@ -107,9 +108,8 @@ ORDER BY MONTH(pickup_date);
 SELECT i.current_month AS month_number, 
      (SELECT SUM(current_amount) AS sum_amount
       FROM V2
-      WHERE current_month < i.current_month) AS Previous_Month, i.current_amount AS Current_Month,
-                    (SELECT SUM(current_amount) AS sum_amount
-                     FROM V2
-                     WHERE current_month > i.current_month) AS Next_Month
+      WHERE current_month < i.current_month) AS Previous_Month, i.current_amount AS Current_Month, (SELECT SUM(current_amount) AS sum_amount
+                                                                                                    FROM V2
+                                                                                                    WHERE current_month > i.current_month) AS Next_Month
 FROM V2 i
 ORDER BY month_number asc;
