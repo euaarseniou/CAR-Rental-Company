@@ -13,11 +13,11 @@ the pickup and the return date. The car is picked up from a location and returne
 ### Deliverables:
 
 
-1. (10%) Use the Entity-Relationship Diagram (ERD) to model entities, relationships, attributes, cardinalities, and all necessary constraints. Use any tool you like to draw the
+1. Use the Entity-Relationship Diagram (ERD) to model entities, relationships, attributes, cardinalities, and all necessary constraints. Use any tool you like to draw the
          ERD.
-2. (10%) Create the relational schema in MySQL/SQLServer and insert a few records into the tables to test your queries below. You will have to hand in the CREATE TABLE
+2. Create the relational schema in MySQL/SQLServer and insert a few records into the tables to test your queries below. You will have to hand in the CREATE TABLE
          statements. 
-3. (60%) Write SQL code and test it to your data for the following queries 
+3. Write SQL code and test it to your data for the following queries 
          <br> a. Show the reservation number and the location ID of all rentals on 5/20/2015 
          <br> b. Show the first and the last name and the mobile phone number of these customers that have rented a car in the category that has label = 'luxury'
          <br> c. Show the total amount of rentals per location ID (pick up)
@@ -27,5 +27,5 @@ the pickup and the return date. The car is picked up from a location and returne
          <br> g. For each month of 2015, count how many rentals had amount greater than this month's average rental amount
          <br> h. For each month of 2015, show the percentage change of the total amount of rentals over the total amount of rentals of the same month of 2014
          <br> i. For each month of 2015, show in three columns: the total rentals’ amount of the previous months, the total rentals’ amount of this month and the total rentals’ amount of the following months</br>
-4. (20%) Using the programming language of your choice, connect to the database and implement query (i) above – without using GROUP BY SQL statements, i.e. you are only allowed
+4. Using the programming language of your choice, connect to the database and implement query (i) above – without using GROUP BY SQL statements, i.e. you are only allowed
          to use SELECT…FROM…WHERE.
